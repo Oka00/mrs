@@ -3,39 +3,25 @@ spring intializerで springboot徹底入門に書いてある設定値で作成
 (ただしjava11を選択)
 pom.xml, application.propertiesは本の設定を参考
 
-postgresqlの準備
+mysql 準備
 ```
- brew install postgresql
- brew services start postgresql
- psql postgres
- 
- # ユーザーの作成
-postgres=# CREATE ROLE mrs LOGIN
-postgres-#     ENCRYPTED PASSWORD 'md586082399b5082acb54472ee195a57ce8'
-postgres-#     NOSUPERUSER INHERIT NOCREATEROLE NOREPLICATION;
+sudo mysql --password
+mysql> create database db_example; -- Creates the new database
+mysql> create user 'springuser'@'%' identified by 'ThePassword'; -- Creates the user
+mysql> grant all on db_example.* to 'springuser'@'%'; -- Gives all privileges to the new user on the newly created database
+以降ののmysqlのログインは mysql --user=springuser --password 
+で ThePasswordを入力
 
-# データベースの作成
-postgres=# CREATE DATABASE mrs
-    WITH OWNER = mrs
-    ENCODING = 'UTF8'
-    TABLESPACE = pg_default
-    LC_COLLATE = 'C'
-    LC_CTYPE = 'C'
-    TEMPLATE = template0
-    CONNECTION LIMIT = -1;
-
-postgres=# \q
-
-application.propertiesのコピー
-# 本との違い
-- java8でなくjava11を採用している  
-    なのでthymeleaf-extras-java8timesとか
-    それをつかうtymleafConfigとか作成してない
-  
-# メモ
-このあたりの参考にする(modelとか)
+```
+ 参考
+```
+spring boot徹底入門 13章
+以下URL
 https://github.com/search?q=org%3Aspring-guides+kotlin
+```
 
+application.properties本での設定
+```
 # JPAで使用するデータベースと接続先の情報を記載
 spring.jpa.database=POSTGRESQL 
 spring.datasource.url=jdbc:postgresql://localhost:5432/mrs
