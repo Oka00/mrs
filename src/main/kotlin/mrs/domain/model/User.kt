@@ -1,17 +1,16 @@
 package mrs.domain.model
 
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.OneToMany
-import javax.persistence.OneToOne
+import javax.persistence.*
 
 @Entity
+@Table(name="usr")
 class User (
     @Id
-    private val userid: String,
+    private val userId: String,
     private val firstName: String,
     private val LastName: String,
-    private val password: String,
-    private val roleName: RoleName
+    @Enumerated(EnumType.STRING)
+    private val roleName: RoleName,
+    private val password: String
 )
 

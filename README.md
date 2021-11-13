@@ -20,27 +20,6 @@ spring boot徹底入門 13章
 https://github.com/search?q=org%3Aspring-guides+kotlin
 ```
 
-application.properties本での設定
-```
-# JPAで使用するデータベースと接続先の情報を記載
-spring.jpa.database=POSTGRESQL 
-spring.datasource.url=jdbc:postgresql://localhost:5432/mrs
-spring.datasource.username=mrs
-spring.datasource.password=mrs
+# 自分用メモ
 
-# hibernateの機能でエンティティクラスからDDLをさくせうして自動実行するかどうかのプロパティ
-# ここではvalidateを設定しDDLは実行せず、
-# エンティティの設定が実際のカラムと矛盾してないかどうかを検査するようにする
-spring.jpa.hibernate.ddl-auto=validate
-
-# Sqlをフォーマットしてみやすくする
-spring.jpa.properties.hibernate.format_sql=true
-
-# sqlのスクリプトのencoding方法
-spring.datasource.sql-script-encoding=UTF-8
-
-# ログレベルの設定と バインドパラメータがログに出力されるようにログレベル設定
-# logging.level.org.hibernate.SQL=DEBUG
-logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
-spring.datasource.separator=/;
-```
+https://docs.google.com/document/d/1o53_4NgJoax7UDZJE3jC0z-wglhNdWwpE5EJS_XLrBM/edit?usp=sharing
