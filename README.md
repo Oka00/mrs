@@ -18,6 +18,7 @@ mysql> grant all on db_example.* to 'springuser'@'%'; -- Gives all privileges to
 spring boot徹底入門 13章
 以下URL
 https://github.com/search?q=org%3Aspring-guides+kotlin
+https://www.baeldung.com/spring-boot-security-autoconfiguration
 ```
 
 # 自分用メモ

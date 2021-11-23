@@ -10,5 +10,5 @@ class MeetingRoom (
         @Id
         @GeneratedValue(strategy=GenerationType.IDENTITY)
         private val roomId: Int,
-        private val roomName: String
+        val roomName: String
 )

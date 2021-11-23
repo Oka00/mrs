@@ -1,10 +1,34 @@
 <!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+<link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+
+<h1>会議室</h1>
+
+
+    <a th:href="@{'/reservableRoomList/' + ${#temporals.format(date.minusDays(1), 'yyyyMMdd')}}">&lt 前日</a>
+    <span th:text="${date}"></span>
+    <a th:href="@{'/reservableRoomList/' + ${#temporals.format(date.plusDays(1), 'yyyyMMdd')}}" >翌日 &gt</a>
+
+    <ul>
+        <li class="list columns" th:each="room: ${roomList}">
+            <a th:href="@{'/reservations/'}"
+               th:text="${room.meetingRoom.roomName}"></a>
+        </li>
+    </ul>
+
+
+
 
 </body>
 </html>
