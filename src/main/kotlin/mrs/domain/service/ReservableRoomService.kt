@@ -7,7 +7,7 @@ import mrs.domain.repository.ReservableRoomRepository
 import java.time.LocalDate
 
 @Service
-class reservableRoomService(val reservableRoomRepository: ReservableRoomRepository) {
+class ReservableRoomService(val reservableRoomRepository: ReservableRoomRepository) {
 
     fun findAll(): MutableList<ReservableRoom> {
         return reservableRoomRepository.findAll()
@@ -16,4 +16,9 @@ class reservableRoomService(val reservableRoomRepository: ReservableRoomReposito
     fun findAllByReservedDate(reservedDate: LocalDate): List<ReservableRoom> {
         return reservableRoomRepository.findAllByReservedDate(reservedDate)
     }
+
+    fun findByReservedDateAndRoomId(reservedDate: LocalDate, roomId:Int): ReservableRoom {
+        return reservableRoomRepository.findByReservedDateAndRoomId(reservedDate, roomId)
+    }
+
 }

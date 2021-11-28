@@ -22,7 +22,7 @@
 
     <ul>
         <li class="list columns" th:each="room: ${roomList}">
-            <a th:href="@{'/reservations/'}"
+            <a th:href="@{'/reservations/' + ${#temporals.format(date, 'yyyyMMdd')} + '/' + ${room.meetingRoom.roomId}}"
                th:text="${room.meetingRoom.roomName}"></a>
         </li>
     </ul>

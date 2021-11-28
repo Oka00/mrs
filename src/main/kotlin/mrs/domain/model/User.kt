@@ -9,7 +9,7 @@ import javax.persistence.*
 @Table(name="usr")
 class User(
     @Id
-    private val userId: String,
+    val userId: String,
     private val firstName: String,
     private val lastName: String,
     @Enumerated(EnumType.STRING)

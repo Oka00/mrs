@@ -7,7 +7,8 @@ import javax.persistence.*
 @Entity
 class Reservation(
     @Id
-    val reservationId: Int,
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    val reservationId: Int?,
     val endTime: LocalTime,
     val startTime: LocalTime,
 

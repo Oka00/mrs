@@ -11,12 +11,12 @@ import javax.persistence.*
 @IdClass(value=ReservableRoomId::class)
 class ReservableRoom (
     @Id
-    private var reservedDate: LocalDate,
+    var reservedDate: LocalDate,
     @Id
-    private var roomId: Int,
+    var roomId: Int,
     @ManyToOne
     @JoinColumn(name = "roomId", referencedColumnName = "roomId", insertable = false, updatable = false)
-    var meetingRoom: MeetingRoom
+    var meetingRoom: MeetingRoom?
 ) : Serializable
 
 @Entity

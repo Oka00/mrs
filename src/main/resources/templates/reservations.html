@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a th:href="@{'/reservableRoomList/' + ${#temporals.format(date, 'yyyyMMdd')}}">会議室一覧へ</a>
+
+
+    <ul>
+        <li th:text="'会議室:' + ${roomName}"></li>
+        <li th:text="'予約者名:' + ${#httpServletRequest.remoteUser}"></li>
+        <li th:text="'日付:' + ${date}"></li>
+        <form method="post" th:action="@{'/reservations/' + ${#temporals.format(date, 'yyyyMMdd')} + '/' + ${roomId}}">
+            <p>開始時間(必須)<input type="time" name="startTime" step="1800" required></p>
+            <p>終了時間(必須)<input type="time" name="endTime"  step="1800" required></p>
+            <input type="hidden" name="date" th:value="${#temporals.format(date, 'yyyyMMdd')}"/>
+
+            <input type="hidden" name="roomId" th:value="${roomId}" />
+<!--            <input type="hidden" name="userId" th:value="${#httpServletRequest.remoteUser}" />-->
+            <p><input type="submit" name="save" value="予約">
+            </p>
+        </form>
+
+        <table>
+
+
+            <thead>
+            <tr>
+                <th>時間帯</th>
+                <th>予約者</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody th:remove="all-but-first" th:each="reservation : ${reservationList}">
+            <tr>
+                <td th:text="${reservation.startTime} + '~'+ ${reservation.endTime}"></td>
+                <td th:text="${reservation.user.userId}"></td>
+                <td>
+                    <form th:action="@{'/reservations/' + ${#temporals.format(date, 'yyyyMMdd')} + '/' + ${roomId}}" method="post">
+                        <input type="hidden" name="reservationId" th:value="${reservation.reservationId}" />
+                        <input type="hidden" name="date" th:value="${#temporals.format(date, 'yyyyMMdd')}" />
+                        <input type="hidden" name="roomId" th:value="${reservation.reservableRoom.roomId}" />
+                        <input type="submit" name="delete" value="取消" />
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>タスク2</td>
+                <td>3/7</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>タスク3</td>
+                <td>1/9</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <li class="list columns" th:each="room: ${roomList}">
+            <a th:href="@{'/reservations/' + ${#temporals.format(date, 'yyyyMMdd')} + '/' + ${room.meetingRoom.roomId}}"
+               th:text="${room.meetingRoom.roomName}"></a>
+        </li>
+
+    </ul>
+
+
+</body>
+</html>

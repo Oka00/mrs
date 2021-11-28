@@ -7,4 +7,5 @@ import java.time.LocalDate
 
 interface ReservableRoomRepository: JpaRepository<ReservableRoom, ReservableRoomId>{
     fun findAllByReservedDate(reservedDate: LocalDate): List<ReservableRoom>
+    fun findByReservedDateAndRoomId(reservedDate: LocalDate, roodId:Int): ReservableRoom
 }
