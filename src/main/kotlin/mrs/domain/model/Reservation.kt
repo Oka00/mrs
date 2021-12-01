@@ -14,7 +14,8 @@ class Reservation(
 
     @ManyToOne
     @JoinColumns(
-        JoinColumn(name = "reservedDate"), JoinColumn(name = "roomId")
+        JoinColumn(name = "reservedDate", referencedColumnName = "reservedDate"),
+        JoinColumn(name = "roomId", referencedColumnName = "roomId")
     )
     val reservableRoom: ReservableRoom,
 
