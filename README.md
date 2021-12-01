@@ -9,17 +9,8 @@ sudo mysql --password
 mysql> create database db_example; -- Creates the new database
 mysql> create user 'springuser'@'%' identified by 'ThePassword'; -- Creates the user
 mysql> grant all on db_example.* to 'springuser'@'%'; -- Gives all privileges to the new user on the newly created database
-以降ののmysqlのログインは mysql --user=springuser --password 
-で ThePasswordを入力
+```
 
-```
- 参考
-```
-spring boot徹底入門 13章
-以下URL
-https://github.com/search?q=org%3Aspring-guides+kotlin
-https://www.baeldung.com/spring-boot-security-autoconfiguration
-```
 
 # 自分用メモ
 
