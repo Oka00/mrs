@@ -22,4 +22,5 @@ class Reservation(
     @ManyToOne
     @JoinColumn(name="userId")
     val user: User
+
 )

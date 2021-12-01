@@ -4,6 +4,7 @@ import mrs.domain.model.ReservableRoom
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import mrs.domain.repository.ReservableRoomRepository
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import java.time.LocalDate
 
 @Service
