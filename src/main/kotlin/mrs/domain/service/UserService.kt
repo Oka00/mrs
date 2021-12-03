@@ -12,8 +12,6 @@ import java.util.Optional
 @Service
 class UserService(val userRepository: UserRepository) : UserDetailsService {
 
-    // TODO: Null対応
-    // TODO: transactionいつ使うべきか考える
     @Transactional(readOnly=true)
     fun findByUserId(userId: String): User{
         return userRepository.findByUserId(userId)

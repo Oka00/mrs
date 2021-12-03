@@ -10,5 +10,6 @@ import java.time.LocalDate
 
 interface ReservationRepository : JpaRepository<Reservation, Int> {
 //    fun findByReservableRoom_ReservableRoomId(reservableRoomId: ReservableRoomId?): List<Reservation>?
-    fun findAllByReservableRoom(reservableRoom : ReservableRoom):List<Reservation>?
+    fun findAllByReservableRoom(reservableRoom : ReservableRoom) : List<Reservation>?
+    fun findByReservationId(reservationId: Int) : Reservation
 }

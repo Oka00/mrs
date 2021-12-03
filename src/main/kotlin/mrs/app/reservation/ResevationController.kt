@@ -6,6 +6,7 @@ import mrs.domain.model.User
 import mrs.domain.service.MeetingRoomService
 import mrs.domain.service.ReservableRoomService
 import mrs.domain.service.ReservationService
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.stereotype.Controller
@@ -50,10 +51,13 @@ class ReservationController(val reservationService: ReservationService,
         @DateTimeFormat(pattern = "yyyyMMdd")
         date: LocalDate,
         @RequestParam
-        roomId: Int
+        roomId: Int,
+        @AuthenticationPrincipal
+        user: User
     ) : String{
 
-        reservationService.removeReservation(reservationId)
+
+        reservationService.removeReservation(reservationService.findByReservationId(reservationId))
         return "redirect:/reservations/{date}/{roomId}"
 
     }

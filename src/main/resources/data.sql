@@ -17,12 +17,13 @@ INSERT INTO meeting_room (room_name) VALUES ('銀座一丁目');
 INSERT INTO meeting_room (room_name) VALUES ('有楽町');
 
 -- 会議室の予約可能日
+-- TODO: 月末だとCURRENT_DATE +2が存在しなくなるので失敗する
 -- room_id=1(新木場)の予約可能日
 INSERT INTO reservable_room (reserved_date, room_id) VALUES (CURRENT_DATE , 1);
+INSERT INTO reservable_room (reserved_date, room_id) VALUES (CURRENT_DATE +2, 1);
 INSERT INTO reservable_room (reserved_date, room_id) VALUES (CURRENT_DATE +1, 1);
-INSERT INTO reservable_room (reserved_date, room_id) VALUES (CURRENT_DATE -1, 1);
 -- room_id=1(有楽町)の予約可能日
 INSERT INTO reservable_room (reserved_date, room_id) VALUES (CURRENT_DATE , 7);
+INSERT INTO reservable_room (reserved_date, room_id) VALUES (CURRENT_DATE +2, 7);
 INSERT INTO reservable_room (reserved_date, room_id) VALUES (CURRENT_DATE +1, 7);
-INSERT INTO reservable_room (reserved_date, room_id) VALUES (CURRENT_DATE -1, 7);
 
